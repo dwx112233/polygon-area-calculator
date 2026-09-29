@@ -28,16 +28,15 @@
 <body>
 <main class="shell">
   <header>
-    <div class="brand"><div><h1>多边形面积计算工具</h1><p>第三次作业</p></div></div>
-    <div class="privacy">数据仅在浏览器中处理</div>
+    <div class="brand"><h1>多边形面积计算工具</h1></div>
   </header>
 
   <section class="grid">
     <article class="panel">
-      <div class="panel-head"><h2>导入空间数据</h2><span class="step">01 / INPUT</span></div>
+      <div class="panel-head"><h2>导入数据</h2></div>
       <div class="input-body">
         <div class="drop" id="dropZone">
-          <div><strong>选择空间数据文件</strong><p>支持 Shapefile ZIP、SHP 文件组和 ASCII 坐标文件</p><button class="pick" id="pickBtn">选择文件</button><a class="download" href="示例空间数据_校园地块.zip" download>下载示例 Shapefile</a><input id="fileInput" type="file" multiple accept=".zip,.shp,.shx,.dbf,.prj,.cpg,.txt,.csv,.asc"></div>
+          <div><strong>选择文件</strong><p>Shapefile ZIP / SHP 文件组 / ASCII</p><button class="pick" id="pickBtn">选择文件</button><a class="download" href="示例空间数据_校园地块.zip" download>下载示例数据</a><input id="fileInput" type="file" multiple accept=".zip,.shp,.shx,.dbf,.prj,.cpg,.txt,.csv,.asc"></div>
         </div>
         <div class="or">或粘贴坐标</div>
         <textarea id="asciiInput" spellcheck="false" aria-label="ASCII 坐标输入" placeholder="# 每行 X,Y；空行或 > 开始新多边形&#10;0,0&#10;100,0&#10;100,80&#10;0,80"></textarea>
@@ -55,7 +54,7 @@
       <div class="map-wrap">
         <div class="map-top"><span class="badge" id="sourceBadge">等待数据</span><span class="badge" id="methodBadge">方法：—</span></div>
         <svg id="preview" viewBox="0 0 700 410" preserveAspectRatio="xMidYMid meet" aria-label="多边形预览"></svg>
-        <div class="empty" id="empty"><div><svg viewBox="0 0 64 64" fill="none"><path d="M10 48 18 13l20 8 17-11-4 41-24 4Z" stroke="currentColor" stroke-width="2"/><path d="m18 13 9 42M38 21 27 55m28-45L38 21" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3"/></svg><b>图形预览区</b><span>导入数据后自动缩放至全部范围</span></div></div>
+        <div class="empty" id="empty"><div><b>图形预览</b></div></div>
         <div class="north">N</div>
       </div>
       <div class="summary">
@@ -69,10 +68,7 @@
       <div class="panel-head"><div><h2>计算结果</h2></div><div class="result-tools"><button class="ghost" id="copyBtn" disabled>复制总面积</button><button class="ghost" id="csvBtn" disabled>导出 CSV</button></div></div>
       <div class="table-scroll"><table><thead><tr><th>序号</th><th>要素名称</th><th>面积</th><th>占比</th><th>顶点数</th></tr></thead><tbody id="tbody"><tr><td colspan="5" class="no-data">暂无结果，请先导入多边形数据</td></tr></tbody></table></div>
     </article>
-
-    <details class="help"><summary>格式与计算说明</summary><p>Shapefile 可选择 ZIP，或同时选择同名的 SHP、DBF、PRJ 文件。ASCII 文件每行写 X,Y，空行分隔多个多边形。投影坐标使用鞋带公式，经纬度坐标使用球面面积算法。</p></details>
   </section>
-  <footer>多边形面积计算工具</footer>
 </main>
 <script>
 (() => {
